@@ -24,12 +24,12 @@ const typeDefs = gql`
 // This is some static practice data for now. Later we will hook our server up to a database.
 const persons = [
   {
-    id: 1,
+    id: "23048073-d8e0-4b40-bb6a-72c5a1198f0e",
     firstName: "Austen",
     lastName: "Mack",
   },
   {
-    id: 2,
+    id: "79c5a40e-011f-4d47-ab8b-2cb066acefe8",
     firstName: "Matthew",
     lastName: "Whitney",
   },
@@ -37,18 +37,20 @@ const persons = [
 
 const healthReports = [
   {
-    userId: 1,
+    id: "1d20d68d-e07a-43d0-9a8d-8b7a5ac5ec3e",
+    userId: "23048073-d8e0-4b40-bb6a-72c5a1198f0e",
     bmi: 28.6,
   },
   {
-    userId: 2,
+    id: "e384e572-646c-487a-b5f7-c0b37653ae51",
+    userId: "79c5a40e-011f-4d47-ab8b-2cb066acefe8",
     bmi: 28.6,
   },
 ];
 
 const providers = [
   {
-    id: 1,
+    id: "5c899f28-73a4-4e69-a39e-6c5220be6bb0",
     name: "Weight Watchers",
     url: "https://www.weightwatchers.com/",
   },
