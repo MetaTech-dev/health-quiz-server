@@ -11,13 +11,21 @@ const typeDefs = gql`
     id: ID
     firstName: String
     lastName: String
+    healthReport: HealthReport
+  }
+
+  type HealthReport {
+    id: ID
+    userId: ID
+    bmi: Float
   }
 
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each. In this
   # case, the "persons" query returns an array of zero or more Persons (defined above).
   type Query {
-    persons: [Person]
+    persons: [Person],
+    healthReports: [HealthReport],
   }
 `;
 
@@ -71,6 +79,7 @@ const providers = [
 const resolvers = {
   Query: {
     persons: () => persons,
+    healthReports: () => healthReports,
   },
 };
 
