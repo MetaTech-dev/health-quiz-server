@@ -11,7 +11,6 @@ const typeDefs = gql`
     id: ID
     firstName: String
     lastName: String
-    healthReport: HealthReport
   }
 
   type HealthReport {
