@@ -8,6 +8,7 @@ const typeDefs = gql`
 
   # This "Person" type defines the queryable fields for every person in our data source.
   type Person {
+    id: ID
     firstName: String
     lastName: String
   }
@@ -23,12 +24,25 @@ const typeDefs = gql`
 // This is some static practice data for now. Later we will hook our server up to a database.
 const persons = [
   {
+    id: 1,
     firstName: "Austen",
     lastName: "Mack",
   },
   {
+    id: 2,
     firstName: "Matthew",
     lastName: "Whitney",
+  },
+];
+
+const healthReports = [
+  {
+    userId: 1,
+    BMI: 28.6,
+  },
+  {
+    userId: 2,
+    BMI: 28.6,
   },
 ];
 
