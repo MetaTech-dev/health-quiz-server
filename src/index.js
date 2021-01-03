@@ -38,11 +38,19 @@ const persons = [
 const healthReports = [
   {
     userId: 1,
-    BMI: 28.6,
+    bmi: 28.6,
   },
   {
     userId: 2,
-    BMI: 28.6,
+    bmi: 28.6,
+  },
+];
+
+const providers = [
+  {
+    id: 1,
+    name: "Weight Watchers",
+    url: "https://www.weightwatchers.com/",
   },
 ];
 
