@@ -13,6 +13,12 @@ const typeDefs = gql`
     lastName: String
   }
 
+  type Provider {
+    id: ID!
+    name: String
+    url: String
+  }
+
   type HealthReport {
     id: ID
     userId: ID
@@ -24,6 +30,7 @@ const typeDefs = gql`
   # case, the "persons" query returns an array of zero or more Persons (defined above).
   type Query {
     persons: [Person],
+    providers: [Provider]
     healthReports: [HealthReport],
   }
 `;
@@ -78,6 +85,7 @@ const providers = [
 const resolvers = {
   Query: {
     persons: () => persons,
+    providers: () => providers,
     healthReports: () => healthReports,
   },
 };
