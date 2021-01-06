@@ -2,8 +2,8 @@ import { gql } from "apollo-server";
 
 const typeDefs = gql`
   type HealthReport {
-    id: ID
-    userId: ID
+    id: ID!
+    personId: ID
     bmi: Float
   }
   extend type Query {
