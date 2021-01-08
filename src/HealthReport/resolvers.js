@@ -19,6 +19,7 @@ const healthReportsData = [
 const resolvers = {
   Query: {
     healthReports: () => healthReportsData,
+    healthReport: (_parent, { id }) => healthReportsData.find((healthReport) => healthReport.id === id || healthReport.personId === id)
   },
 };
 
