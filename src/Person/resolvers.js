@@ -19,6 +19,7 @@ const personsData = [
 const resolvers = {
   Query: {
     persons: () => personsData,
+    person: (_parent, { id }) => personsData.find((person) => person.id === id),
   },
 };
 
