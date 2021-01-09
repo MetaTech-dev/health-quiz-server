@@ -8,6 +8,8 @@ const typeDefs = gql`
   }
   extend type Query {
     healthReports: [HealthReport]
+    healthReportById(id: ID!): HealthReport
+    healthReportByPersonId(personId: ID!): HealthReport
   }
 `;
 
