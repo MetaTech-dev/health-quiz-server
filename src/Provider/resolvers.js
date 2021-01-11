@@ -9,6 +9,7 @@ const providersData = [
 const resolvers = {
   Query: {
     providers: () => providersData,
+    provider: (_parent, { id }) => providersData.find((provider) => provider.id === id),
   },
 };
 

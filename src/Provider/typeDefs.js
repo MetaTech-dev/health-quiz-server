@@ -9,6 +9,7 @@ const typeDefs = gql`
 
   extend type Query {
     providers: [Provider]
+    provider(id: ID!): Provider
   }
 `;
 
