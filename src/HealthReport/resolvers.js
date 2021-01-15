@@ -1,4 +1,6 @@
-const healthReportsData = [
+import { v4 as uuid } from "uuid";
+
+let healthReportsData = [
   {
     id: "1d20d68d-e07a-43d0-9a8d-8b7a5ac5ec3e",
     personId: "23048073-d8e0-4b40-bb6a-72c5a1198f0e",
@@ -20,12 +22,38 @@ const resolvers = {
   Query: {
     healthReports: () => healthReportsData,
     healthReportById: (_parent, { id }) => healthReportsData.find((healthReport) =>
-      healthReport.id === id
-    ),
+      healthReport.id === id),
     healthReportByPersonId: (_parent, { personId }) => healthReportsData.find((healthReport) =>
-      healthReport.personId === personId
-    ),
+      healthReport.personId === personId),
   },
-};
+  Mutation: {
+    createHealthReport: (_parent, { personId, bmi }) => {
+      const newHealthReport = {
+        id = uuid(),
+        personId,
+        bmi,
+      };
+      healthReportsData.push(newHealthReport);
+      console.log(healthReportsData);
+      return newHealthReport;
+    },
+    updateHealthReport: (_parent, { id, personId }) => {
+      const healthReportIndex = healthReportsData.findIndex((healthReport) =>
+        healthReport.personId === personId);
+      if (id) {
+        healthReportsData[healthReportIndex].id = id;
+      }
+      if (personId) {
+        healthReportsData[healthReportIndex].personId = personId;
+      }
+      return healthReportsData[healthReportIndex];
+    },
+    deleteHealthReport: (_parent, { id }) => {
+      healthReportsData = healthReportsData.filter((healthReport) => healthReport.id !== id);
+      console.log(healthReportsData);
+      return "Success";
+    },
+  },
+},
 
 export default resolvers;
