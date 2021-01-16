@@ -1,4 +1,6 @@
-export const personsData = [
+import { v4 as uuid } from "uuid";
+
+export let personsData = [
   {
     id: "23048073-d8e0-4b40-bb6a-72c5a1198f0e",
     firstName: "Austen",
@@ -20,6 +22,31 @@ const resolvers = {
   Query: {
     persons: () => personsData,
     person: (_parent, { id }) => personsData.find((person) => person.id === id),
+  },
+  Mutation: {
+    createPerson: (_parent, { firstName, lastName }) => {
+      const newPerson = {
+        id: uuid(),
+        firstName,
+        lastName,
+      };
+      personsData.push(newPerson);
+      return newPerson;
+    },
+    updatePerson: (_parent, { id, firstName, lastName }) => {
+      const personIndex = personsData.findIndex((person) => person.id === id);
+      if (firstName) {
+        personsData[personIndex].firstName = firstName;
+      }
+      if (lastName) {
+        personsData[personIndex].lastName = lastName;
+      }
+      return personsData[personIndex];
+    },
+    deletePerson: (_parent, { id }) => {
+      personsData = personsData.filter((person) => person.id !== id);
+      return "Success";
+    },
   },
 };
 
