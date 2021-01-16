@@ -29,31 +29,26 @@ const resolvers = {
   Mutation: {
     createHealthReport: (_parent, { personId, bmi }) => {
       const newHealthReport = {
-        id = uuid(),
+        id: uuid(),
         personId,
         bmi,
       };
       healthReportsData.push(newHealthReport);
-      console.log(healthReportsData);
       return newHealthReport;
     },
-    updateHealthReport: (_parent, { id, personId }) => {
+    updateHealthReport: (_parent, { personId, bmi }) => {
       const healthReportIndex = healthReportsData.findIndex((healthReport) =>
         healthReport.personId === personId);
-      if (id) {
-        healthReportsData[healthReportIndex].id = id;
-      }
-      if (personId) {
-        healthReportsData[healthReportIndex].personId = personId;
+      if (bmi) {
+        healthReportsData[healthReportIndex].bmi = bmi;
       }
       return healthReportsData[healthReportIndex];
     },
     deleteHealthReport: (_parent, { id }) => {
       healthReportsData = healthReportsData.filter((healthReport) => healthReport.id !== id);
-      console.log(healthReportsData);
       return "Success";
     },
   },
-},
+};
 
 export default resolvers;

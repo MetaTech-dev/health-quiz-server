@@ -14,7 +14,7 @@ const typeDefs = gql`
 
   type Mutation {
     createHealthReport(personId: ID!, bmi: Float): HealthReport
-    updateHealthReport(id: ID, personId: ID!): HealthReport
+    updateHealthReport(personId: ID!, bmi: Float): HealthReport
     deleteHealthReport(id: ID!): String
   }
 `;
