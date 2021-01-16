@@ -14,18 +14,22 @@ const resolvers = {
     provider: (_parent, { id }) => providersData.find((provider) => provider.id === id),
   },
   Mutation: {
-    createProvider: (_parent, { id }) => {
+    createProvider: (_parent, { name, url }) => {
       const newProvider = {
         id: uuid(),
-        id,
+        name,
+        url
       };
       providersData.push(newProvider);
       return newProvider;
     },
-    updateProvider: (_parent, { id }) => {
+    updateProvider: (_parent, { name, url }) => {
       const providerIndex = providersData.findIndex((provider) => provider.id === id);
-      if (id) {
-        providersData[providerIndex].id = id;
+      if (name) {
+        providersData[providerIndex].name = name;
+      }
+      if (url) {
+        providersData[providerIndex].url = url;
       }
       return providersData[providerIndex];
     },
