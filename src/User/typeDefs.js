@@ -5,14 +5,20 @@ const typeDefs = gql`
     id: ID!
     email: String!
     password: String!
-    userPerson: Person
-    personId: ID!
+    person: Person
+    personId: ID
   }
 
   extend type Query {
     users: [User]
     user(id: ID!): User
     userByEmail(email: String!): User  
+  }
+
+  type Mutation {
+    createUser (email: String!, password: String!): User
+    updateUser (id: ID!, email: String, password: String, personId: ID): User
+    deleteUser (id: ID!): String
   }
 `;
 
