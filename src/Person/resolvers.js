@@ -1,4 +1,4 @@
-const personsData = [
+export const personsData = [
   {
     id: "23048073-d8e0-4b40-bb6a-72c5a1198f0e",
     firstName: "Austen",

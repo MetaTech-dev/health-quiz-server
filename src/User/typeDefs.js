@@ -5,6 +5,7 @@ const typeDefs = gql`
     id: ID!
     email: String!
     password: String!
+    userPerson: Person
     personId: ID!
   }
 
