@@ -12,7 +12,7 @@ const typeDefs = gql`
     healthReportByPersonId(personId: ID!): HealthReport
   }
 
-  type Mutation {
+  extend type Mutation {
     createHealthReport(personId: ID!, bmi: Float): HealthReport
     updateHealthReport(personId: ID!, bmi: Float): HealthReport
     deleteHealthReport(id: ID!): String
