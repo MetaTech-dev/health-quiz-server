@@ -11,6 +11,12 @@ const typeDefs = gql`
     healthReportById(id: ID!): HealthReport
     healthReportByPersonId(personId: ID!): HealthReport
   }
+
+  type Mutation {
+    createHealthReport(personId: ID!, bmi: Float): HealthReport
+    updateHealthReport(personId: ID!, bmi: Float): HealthReport
+    deleteHealthReport(id: ID!): String
+  }
 `;
 
 export default typeDefs;
