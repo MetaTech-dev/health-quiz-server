@@ -31,7 +31,6 @@ const resolvers = {
         lastName,
       };
       personsData.push(newPerson);
-      console.log(personsData);
       return newPerson;
     },
     updatePerson: (_parent, { id, firstName, lastName }) => {
@@ -46,7 +45,6 @@ const resolvers = {
     },
     deletePerson: (_parent, { id }) => {
       personsData = personsData.filter((person) => person.id !== id);
-      console.log(personsData);
       return "Success";
     },
   },
