@@ -13,8 +13,8 @@ const typeDefs = gql`
   }
 
   extend type Mutation {
-    createProvider(id: ID!): Provider
-    updateProvider(id: ID!): Provider
+    createProvider(name: String, url: String): Provider
+    updateProvider(id: ID!, name: String, url: String): Provider
     deleteProvider(id: ID!): String
   }
 `;
