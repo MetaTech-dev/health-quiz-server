@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import { healthReportsData } from "../HealthReport/resolvers";
 
 export let personsData = [
   {
@@ -47,6 +48,10 @@ const resolvers = {
       personsData = personsData.filter((person) => person.id !== id);
       return "Success";
     },
+  },
+  Person: {
+    healthReport: (parent) =>
+      healthReportsData.find((hR) => hR.personId === parent.id),
   },
 };
 
