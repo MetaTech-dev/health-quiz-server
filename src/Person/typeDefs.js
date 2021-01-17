@@ -5,6 +5,7 @@ const typeDefs = gql`
     id: ID!
     firstName: String!
     lastName: String!
+    healthReport: HealthReport
   }
 
   extend type Query {
