@@ -11,6 +11,12 @@ const typeDefs = gql`
     providers: [Provider]
     provider(id: ID!): Provider
   }
+
+  extend type Mutation {
+    createProvider(name: String, url: String): Provider
+    updateProvider(id: ID!, name: String, url: String): Provider
+    deleteProvider(id: ID!): String
+  }
 `;
 
 export default typeDefs;

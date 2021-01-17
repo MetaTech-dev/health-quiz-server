@@ -13,18 +13,24 @@ import personResolvers from "./Person/resolvers";
 import providerResolvers from "./Provider/resolvers";
 import userResolvers from "./User/resolvers";
 
-// apollo-server only allows one type Query so our imported modules must extend that type
+// apollo-server only allows one type Query and type Mutation so our imported modules must extend that type
 // and we need a root type Query to extend.
 const rootTypeDef = gql`
   type Query {
-    _root: String
+    _rootQuery: String
+  }
+  type Mutation {
+    _rootMutation: String
   }
 `;
 
-// every query must have a resolver
+// every query and mutation must have a resolver
 const rootResolver = {
   Query: {
-    _root: () => "root query is only a placeholder",
+    _rootQuery: () => "root query is only a placeholder",
+  },
+  Mutation: {
+    _rootMutation: () => "root mutation is only a placeholder",
   },
 };
 
