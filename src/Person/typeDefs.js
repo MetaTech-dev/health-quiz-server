@@ -13,7 +13,7 @@ const typeDefs = gql`
     person(id: ID!): Person
   }
 
-  type Mutation {
+  extend type Mutation {
     createPerson(firstName: String!, lastName: String!): Person
     updatePerson(id: ID!, firstName: String, lastName: String): Person
     deletePerson(id: ID!): String

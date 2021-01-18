@@ -6,12 +6,14 @@ import healthReportTypeDefs from "./HealthReport/typeDefs";
 import personTypeDefs from "./Person/typeDefs";
 import providerTypeDefs from "./Provider/typeDefs";
 import userTypeDefs from "./User/typeDefs";
+import goalTypeDefs from "./Goal/typeDefs";
 
 // resolvers
 import healthReportResolvers from "./HealthReport/resolvers";
 import personResolvers from "./Person/resolvers";
 import providerResolvers from "./Provider/resolvers";
 import userResolvers from "./User/resolvers";
+import goalResolvers from "./Goal/resolvers";
 
 // apollo-server only allows one type Query and type Mutation so our imported modules must extend that type
 // and we need a root type Query to extend.
@@ -41,6 +43,7 @@ const typeDefs = [
   personTypeDefs,
   providerTypeDefs,
   userTypeDefs,
+  goalTypeDefs,
 ];
 
 // merge resolvers
@@ -50,6 +53,7 @@ const resolvers = merge(
   personResolvers,
   providerResolvers,
   userResolvers,
+  goalResolvers,
 );
 
 // merge schema

@@ -15,7 +15,7 @@ const typeDefs = gql`
     userByEmail(email: String!): User  
   }
 
-  type Mutation {
+  extend type Mutation {
     createUser (email: String!, password: String!): User
     updateUser (id: ID!, email: String, password: String, personId: ID): User
     deleteUser (id: ID!): String
