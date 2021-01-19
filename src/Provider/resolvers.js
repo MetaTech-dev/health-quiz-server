@@ -11,20 +11,23 @@ let providersData = [
 const resolvers = {
   Query: {
     providers: () => providersData,
-    provider: (_parent, { id }) => providersData.find((provider) => provider.id === id),
+    provider: (_parent, { id }) =>
+      providersData.find((provider) => provider.id === id),
   },
   Mutation: {
     createProvider: (_parent, { name, url }) => {
       const newProvider = {
         id: uuid(),
         name,
-        url
+        url,
       };
       providersData.push(newProvider);
       return newProvider;
     },
-    updateProvider: (_parent, { name, url }) => {
-      const providerIndex = providersData.findIndex((provider) => provider.id === id);
+    updateProvider: (_parent, { id, name, url }) => {
+      const providerIndex = providersData.findIndex(
+        (provider) => provider.id === id
+      );
       if (name) {
         providersData[providerIndex].name = name;
       }
