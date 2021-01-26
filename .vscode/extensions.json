@@ -1,3 +1,15 @@
 {
-  "recommendations": ["apollographql.vscode-apollo"]
+  "recommendations": [
+    "apollographql.vscode-apollo",
+    "coenraads.bracket-pair-colorizer",
+    "mikestead.dotenv",
+    "dbaeumer.vscode-eslint",
+    "github.vscode-pull-request-github",
+    "eamodio.gitlens",
+    "orta.vscode-jest",
+    "eg2.vscode-npm-script",
+    "christian-kohler.npm-intellisense",
+    "esbenp.prettier-vscode",
+    "gruntfuggly.todo-tree"
+  ]
 }

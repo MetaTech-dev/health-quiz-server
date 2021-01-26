@@ -7,7 +7,8 @@
     "dev": "nodemon --exec babel-node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "npm install",
-    "start": "babel-node src/index.js"
+    "start": "babel-node src/index.js",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -20,15 +21,37 @@
   },
   "homepage": "https://github.com/matthewjwhitney/health-quiz-server#readme",
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^4.3.8",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.2.1"
   },
   "dependencies": {
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
+    "apollo-datasource": "^0.7.2",
     "apollo-server": "^2.19.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
     "graphql": "^15.4.0",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
+    "sequelize": "^6.4.0",
+    "sqlite3": "^5.0.1",
     "uuid": "^8.3.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }

@@ -1,32 +1,29 @@
-import { ApolloServer } from "apollo-server";
-import schema from "./schema";
-import createStore from "./store";
-import UserAPI from "./User/dataSource";
-import isEmail from "isemail";
+import { ApolloServer } from 'apollo-server';
+import jwt from 'jsonwebtoken';
 
-// creates a sequelize connection.
-const store = createStore();
+import { typeDefs, resolvers } from './schema';
+import dataSources from './dataSources';
 
-const dataSources = () => ({
-  userAPI: new UserAPI({ store }),
-});
+require('dotenv').config();
 
 const context = async ({ req }) => {
-  // simple auth check on every request
-  const auth = (req.headers && req.headers.authorization) || "";
-  const email = Buffer.from(auth, "base64").toString("ascii");
+  let user;
 
-  // if the email isn't formatted validly, return null for user
-  if (!isEmail.validate(email)) return { user: null };
-  // find a user by their email
-  const users = await store.users.findOrCreate({ where: { email } });
-  const user = users && users[0] ? users[0] : null;
+  const { authorization } = req.headers;
+
+  if (authorization) {
+    const token = authorization.replace('Bearer ', '');
+
+    // replace superSecretKey with env variable
+    user = jwt.verify(token, process.env.JWT_SECRET);
+  }
 
   return { user };
 };
 
 const server = new ApolloServer({
-  ...schema,
+  typeDefs,
+  resolvers,
   dataSources,
   context,
   introspection: true,
